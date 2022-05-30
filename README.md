@@ -26,7 +26,7 @@ Setup a password for the root user, then click on `Continue (step 1 of 5)`
 
 ![](_img/aws/create_free_user/2022-05-30_15-35.png)
 
-Click on Personal and fill in your personal information,then click on `Continue (step 2 of 5)`
+Click on `Personal - for your own projects` and fill in your personal information,then click on `Continue (step 2 of 5)`
 
 ![](_img/aws/create_free_user/2022-05-30_15-36.png)
 

@@ -2,7 +2,7 @@
 
 To follow this workshop you will need access to either AWS, DigitalOcean or Hetzner. This repository includes a guide on how to setup a Free AWS account.
 
-You will need to have Ansible, Terraform, Molecule, ansible-lint, yamllint and VS Code (or any other source-code editor) installed. I recommend setting up a clean Ubuntu VM and running this [playbook](https://github.com/justin-p/ansible-playbook-terraform-workstation#installation) in your VM. This will setup everything you need during the workshop (and more).
+You will also need to have Ansible, Terraform, Molecule, ansible-lint, yamllint and VS Code (or any other source-code editor) installed. I recommend setting up a clean Ubuntu VM and running this [playbook](https://github.com/justin-p/ansible-playbook-terraform-workstation#installation) in your VM. This will setup everything you need during the workshop (and more).
 
 ## Setup
 

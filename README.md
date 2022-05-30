@@ -14,7 +14,7 @@ git clone https://github.com/justin-p/SenseCon2022-IaC-Ansible-Workshop
 
 ### Create free AWS account (Credit Card required)
 
-(Skip this if you are using DigitalOcean or Hetzner.)
+(Skip this if you are using DigitalOcean, Hetzner or already have a AWS account.)
 
 Open https://aws.amazon.com/free and click on `Create a Free Account`.
 
@@ -130,6 +130,8 @@ export DO_PAT="dop_v1_AAABBBCCC"
 
 #### Hetzner
 
+(Skip this if you are using AWS or DigitalOcean.)
+
 Login into your existing account and click on `New Project`.
 
 ![](img/../_img/hetzner/2022-05-30_15-06.png)
@@ -168,13 +170,13 @@ export HCLOUD_TOKEN="AAABBBCCC"
 
 #### `deploy_server/defaults/main.yml`
 
-Change the variables in this file, below is a description of the variables.
+Change the variables in the `deploy_server/defaults/main.yml` file. Below is a description of what the variables are used for.
 
 `provider` - your preferred provider. Can be `aws`, `digitalocean` or `hetzner`
 
 `project_name` - project name. you can leave this on the default, `sensecon2022`
 
-`sshkey_folder` - your .ssh folder location. Must be full path like `/home/justin/.ssh`
+`sshkey_folder` - your `.ssh` folder location. Must be full path like `/home/justin/.ssh`
 
 
 ## Create infrastructure

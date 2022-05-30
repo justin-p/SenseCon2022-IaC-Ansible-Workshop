@@ -79,9 +79,9 @@ export AWS_ACCESS_KEY_ID="AAABBBCCC"
 export AWS_SECRET_ACCESS_KEY="AAABBBCCC"
 ```
 
-#### AWS fedarated
+#### AWS federated
 
-If you have access to AWS through SSO/fedarated users the setup is easier. During the login you will be prompted to select a role. Here you can click on `Command line or programmatic access`.
+If you have access to AWS through SSO/federated users the setup is easier. During the login you will be prompted to select a role. Here you can click on `Command line or programmatic access`.
 
 ![](_img/aws/federated/2022-05-30_15-19.png)
 

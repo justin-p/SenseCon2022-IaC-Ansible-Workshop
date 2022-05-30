@@ -18,7 +18,7 @@
         dest: "{{ sshkey_folder }}"
         mode: 0700 
         owner: "{{ lookup('env', 'USER') }}"
-        state: directory      
+        state: directory
 
     - name: Ensure the needed ssh keys are created
       community.crypto.openssh_keypair:

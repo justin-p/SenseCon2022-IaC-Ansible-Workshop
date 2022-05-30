@@ -25,6 +25,7 @@
         variables_files: "{{ _terraformproviders[provider].path }}/terraform.tfvars"
         state: absent
 
+  post_tasks:
     - name: Ensure local ssh keys are destroyed
       ansible.builtin.file:
         path: "{{ sshkey_folder }}/{{ item }}-{{ project_name }}"

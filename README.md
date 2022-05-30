@@ -1,14 +1,22 @@
 # SenseCon2022-IaC-Ansible-Workshop
 
+To follow this workshop you will need access to either AWS, DigitalOcean or Hetzner. This repository includes a guide on how to setup a Free AWS account.
+
 ## Setup 
 
-Clone this repository on the machine you intend to follow the workshop from. I recommend setting up a clean Ubuntu VM and running this [playbook](https://github.com/justin-p/ansible-playbook-terraform-workstation#installation) in your VM.
+You will need to have Ansible, Terraform, Molecule, ansible-lint, yamllint and VS Code (or any other source-code editor) installed. I recommend setting up a clean Ubuntu VM and running this [playbook](https://github.com/justin-p/ansible-playbook-terraform-workstation#installation) in your VM. This will setup everything you need during the workshop (and more).
+
+
+
+Clone this repository on the machine you intend to follow the workshop from.
 
 ```
 git clone https://github.com/justin-p/SenseCon2022-IaC-Ansible-Workshop
 ```
 
 ### Create free AWS account (Credit Card required)
+
+(Skip this if you are using DigitalOcean or Hetzner.)
 
 Open https://aws.amazon.com/free and click on `Create a Free Account`.
 
@@ -96,6 +104,8 @@ export AWS_SESSION_TOKEN="AAABBBCCC"
 ```
 
 #### DigitalOcean
+
+(Skip this if you are using AWS or Hetzner.)
 
 Login into your existing account and click on `API`.
 

@@ -1,7 +1,7 @@
 output "public_ip" {
-  value = aws_instance.main.public_ip
+  value = hcloud_server.main.ipv4_address
 }
 
 output "ssh_command" {
-  value = "ssh ${var.ssh_user}@${aws_instance.main.public_ip} -i ${var.ssh_folder}/${var.ssh_key_name}"
+  value = "ssh ${var.ssh_user}@${hcloud_server.main.ipv4_address} -i ${var.ssh_folder}/${var.ssh_key_name}"
 }

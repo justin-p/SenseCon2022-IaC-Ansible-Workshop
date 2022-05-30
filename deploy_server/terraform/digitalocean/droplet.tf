@@ -17,9 +17,9 @@ resource "digitalocean_droplet" "main" {
 resource "null_resource" "is_server_ready_check" { # ensure that SSH is ready and accepting connections, that cloud-init has finished and that no apt process is running.
   connection {
     type        = "ssh"
-    user        = "ubuntu"
+    user        = var.ssh_user
     host        = digitalocean_droplet.main.ipv4_address
-    private_key = file("${local_file.private_key.filename}")
+    private_key = file("${var.ssh_folder}/${var.ssh_key_name}")
   }
 
   provisioner "remote-exec" {
@@ -27,10 +27,10 @@ resource "null_resource" "is_server_ready_check" { # ensure that SSH is ready an
   }
 
   provisioner "local-exec" {
-    command = "while ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR ubuntu@${digitalocean_droplet.main.ipv4_address} -i ${local_file.private_key.filename} 'ps aux | grep cloud-init | grep -v grep > /dev/null'; do echo 'Waiting for cloud-init to complete...'; sleep 10; done"
+    command = "while ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR ${var.ssh_user}@${digitalocean_droplet.main.ipv4_address} -i ${var.ssh_folder}/${var.ssh_key_name} 'ps aux | grep cloud-init | grep -v grep > /dev/null'; do echo 'Waiting for cloud-init to complete...'; sleep 10; done"
   }
 
   provisioner "local-exec" {
-    command = "while ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR ubuntu@${digitalocean_droplet.main.ipv4_address} -i ${local_file.private_key.filename} 'ps aux | grep apt-get | grep -v grep > /dev/null'; do echo 'Waiting for apt-get to complete...'; sleep 10; done"
+    command = "while ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR ${var.ssh_user}@${digitalocean_droplet.main.ipv4_address} -i ${var.ssh_folder}/${var.ssh_key_name} 'ps aux | grep apt-get | grep -v grep > /dev/null'; do echo 'Waiting for apt-get to complete...'; sleep 10; done"
   }
 }

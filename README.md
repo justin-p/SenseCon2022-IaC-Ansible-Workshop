@@ -22,11 +22,11 @@ Verify the e-mail address. You should receive a code on your e-mail. Enter the c
 
 ![](_img/aws/create_free_user/2022-05-30_15-34.png)
 
-Setup a password for the root user, then click on `Continue (step 1 of 5)`
+Setup a password for the root user, then click on `Continue (step 1 of 5)`.
 
 ![](_img/aws/create_free_user/2022-05-30_15-35.png)
 
-Click on `Personal - for your own projects` and fill in your personal information,then click on `Continue (step 2 of 5)`
+Click on `Personal - for your own projects` and fill in your personal information,then click on `Continue (step 2 of 5)`.
 
 ![](_img/aws/create_free_user/2022-05-30_15-36.png)
 
@@ -38,7 +38,7 @@ Fill in a valid phone number to valide the account, then click then click on `Se
 
 ![](_img/aws/create_free_user/2022-05-30_15-40.png)
 
-Enter the validation code then click on `Continue (step 4 of 5)`
+Enter the validation code then click on `Continue (step 4 of 5)`.
 
 ![](_img/aws/create_free_user/2022-05-30_15-41.png)
 
@@ -68,7 +68,7 @@ Click on `Access keys (access key ID and secret access key)`, then click on `Gen
 
 ![](_img/aws/root_user/2022-05-30_15-16_1.png)
 
-Copy the `Access Key ID` and the `Secret Access Key`
+Copy the `Access Key ID` and the `Secret Access Key`.
 
 ![](_img/aws/root_user/2022-05-30_15-17.png)
 

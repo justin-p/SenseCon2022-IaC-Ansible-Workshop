@@ -156,9 +156,9 @@ Replace `AAABBBCCC` with your token in the command below and then run this comma
 export HCLOUD_TOKEN="AAABBBCCC"
 ```
 
-### variables
+### Variables
 
-### File `deploy_server/defaults/main.yml`
+#### `deploy_server/defaults/main.yml`
 
 Change the variables in this file, below is a description of the variables.
 

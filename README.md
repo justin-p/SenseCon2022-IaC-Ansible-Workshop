@@ -6,7 +6,7 @@ You will need to have Ansible, Terraform, Molecule, ansible-lint, yamllint and V
 
 ## Setup
 
-Clone this repository on the machine you intend to follow the workshop from.
+Clone this repository on the machine you intend to follow the workshop from. I recommend setting up a clean Ubuntu VM and running this [playbook](https://github.com/justin-p/ansible-playbook-terraform-workstation#installation) in your VM.
 
 ```
 git clone https://github.com/justin-p/SenseCon2022-IaC-Ansible-Workshop

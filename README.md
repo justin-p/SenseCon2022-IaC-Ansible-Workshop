@@ -14,7 +14,7 @@ Open https://aws.amazon.com/free and click on `Create a Free Account`.
 
 ![](_img/aws/create_free_user/2022-05-30_15-32.png)
 
-Enter a valid `Root user e-mail address`, a `AWS account name` and click on `Verify email address`/
+Enter a valid `Root user e-mail address`, a `AWS account name` and click on `Verify email address`.
 
 ![](_img/aws/create_free_user/2022-05-30_15-33.png)
 

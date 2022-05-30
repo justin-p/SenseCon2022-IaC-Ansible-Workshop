@@ -162,7 +162,7 @@ export HCLOUD_TOKEN="AAABBBCCC"
 
 Change the variables in this file, below is a description of the variables.
 
-`provider` - Your prefered provider. Can be `aws`, `digitalocean` or `hetzner`  
+`provider` - your preferred provider. Can be `aws`, `digitalocean` or `hetzner`  
 
 `project_name` - project name. you can leave this on the default, `sensecon2022`  
 

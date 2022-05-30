@@ -8,7 +8,7 @@ Clone this repository on the machine you intend to follow the workshop from. I r
 git clone https://github.com/justin-p/SenseCon2022-IaC-Ansible-Workshop
 ```
 
-### Create free AWS account
+### Create free AWS account (Credit Card required)
 
 Open https://aws.amazon.com/free and click on `Create a Free Account`.
 

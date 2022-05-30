@@ -1,6 +1,6 @@
 # SenseCon2022-IaC-Ansible-Workshop
 
-## Setup 
+## Setup
 
 Clone this repository on the machine you intend to follow the workshop from. I recommend setting up a clean Ubuntu VM and running this [playbook](https://github.com/justin-p/ansible-playbook-terraform-workstation#installation) in your VM.
 
@@ -162,11 +162,11 @@ export HCLOUD_TOKEN="AAABBBCCC"
 
 Change the variables in this file, below is a description of the variables.
 
-`provider` - your preferred provider. Can be `aws`, `digitalocean` or `hetzner`  
+`provider` - your preferred provider. Can be `aws`, `digitalocean` or `hetzner`
 
-`project_name` - project name. you can leave this on the default, `sensecon2022`  
+`project_name` - project name. you can leave this on the default, `sensecon2022`
 
-`sshkey_folder` - your .ssh folder location. Must be full path like `/home/justin/.ssh`  
+`sshkey_folder` - your .ssh folder location. Must be full path like `/home/justin/.ssh`
 
 
 ## Create infrastructure

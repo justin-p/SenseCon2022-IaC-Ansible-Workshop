@@ -11,7 +11,7 @@ resource "null_resource" "is_server_ready_check" { # ensure that SSH is ready an
   connection {
     type        = "ssh"
     user        = var.ssh_user
-    host        = hcloud_server.main.ipv4_address 
+    host        = hcloud_server.main.ipv4_address
     private_key = file("${var.ssh_folder}/${var.ssh_key_name}")
   }
 

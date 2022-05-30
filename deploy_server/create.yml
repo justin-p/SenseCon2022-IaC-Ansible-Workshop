@@ -5,7 +5,7 @@
   vars_files:
     - "{{ playbook_dir }}/defaults/main.yml"
     - "{{ playbook_dir }}/vars/main.yml"
-  
+
   pre_tasks:
     - name: Assert that provider is defined
       ansible.builtin.assert:
@@ -14,9 +14,9 @@
         quiet: yes
 
     - name: Ensure .ssh directory exists
-      file: 
+      file:
         dest: "{{ sshkey_folder }}"
-        mode: 0700 
+        mode: 0700
         owner: "{{ lookup('env', 'USER') }}"
         state: directory
 
@@ -38,7 +38,7 @@
         variables_files: "{{ _terraformproviders[provider].path }}/terraform.tfvars"
         force_init: true
       register: terraform_infra
-  
+
   post_tasks:
     - name: Print terraform outputs
       debug:

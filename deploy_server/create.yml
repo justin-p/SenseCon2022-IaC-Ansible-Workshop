@@ -16,7 +16,7 @@
     - name: Ensure .ssh directory exists
       file: 
         dest: "{{ sshkey_folder }}"
-        mode: 0700 
+        mode: 0700
         owner: "{{ lookup('env', 'USER') }}"
         state: directory
 

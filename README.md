@@ -54,7 +54,7 @@ Login to the account using the root user.
 
 ![](_img/aws/create_free_user/2022-05-30_15-52.png)
 
-### Tokens
+### Generate API Tokens
 
 #### AWS free account (root user)
 
@@ -97,7 +97,7 @@ export AWS_SESSION_TOKEN="AAABBBCCC"
 
 #### DigitalOcean
 
-Login into your account and click on `API`.
+Login into your existing account and click on `API`.
 
 ![](_img/digitalocean/2022-05-30_14-57.png)
 
@@ -122,7 +122,7 @@ export DO_PAT="dop_v1_AAABBBCCC"
 
 #### Hetzner
 
-Login into your account and click on `New Project`.
+Login into your existing account and click on `New Project`.
 
 ![](img/../_img/hetzner/2022-05-30_15-06.png)
 

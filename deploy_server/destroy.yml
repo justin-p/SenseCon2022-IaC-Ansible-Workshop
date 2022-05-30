@@ -32,3 +32,8 @@
         state: absent
       with_items:
         - ubuntu
+
+    - name: Remove 'terraform.tfvars' file
+      ansible.builtin.file:
+        path: "{{ _terraformproviders[provider].path }}/terraform.tfvars"
+        state: absent

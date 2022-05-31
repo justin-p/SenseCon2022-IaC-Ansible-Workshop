@@ -2,7 +2,7 @@
 - hosts: all
   become: true
   tasks:
-    - name: Ensure apt has latested package update_cache.
+    - name: Update apt cache if needed.
       ansible.builtin.apt:
         update_cache: true
 

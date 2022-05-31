@@ -1,0 +1,36 @@
+- hosts: all
+  become: true
+
+  pre_tasks:
+    - name: Update apt cache if needed.
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+  handlers:
+    - name: restart nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
+
+  tasks:
+    - name: Ensure NGINX is installed.
+      ansible.builtin.apt:
+        name:
+          - nginx
+        state: present
+
+    - name: Command that will trigger the 'restart nginx' handler.
+      ansible.builtin.command:
+        cmd: "echo 'This command changes a nginx config file.'"
+      notify: restart nginx
+      changed_when: true
+      #changed_when: false
+
+    - name: Force handlers to run now.
+      ansible.builtin.meta: flush_handlers
+
+    - name: Some other commands.
+      ansible.builtin.command:
+        cmd: "echo 'This is another dummy command.'"
+      changed_when: false

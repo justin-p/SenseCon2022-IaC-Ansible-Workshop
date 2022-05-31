@@ -1,0 +1,17 @@
+- hosts: all
+  become: true
+  vars:
+    package: "nginx"
+
+  pre_tasks:
+    - name: Update apt cache if needed.
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+  tasks:
+    - name: "Ensure {{ package }} is installed."
+      ansible.builtin.apt:
+        name:
+          - "{{ package }}"
+        state: present
+

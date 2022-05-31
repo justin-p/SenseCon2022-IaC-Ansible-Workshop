@@ -1,0 +1,6 @@
+sensecon:
+  hosts:
+    quality-rooster-m24p8d:
+      ansible_host: 3.70.167.106
+      ansible_user: ubuntu
+      ansible_ssh_private_key_file: /home/justin/.ssh/ubuntu-sensecon2022

@@ -1,0 +1,25 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Ensure apt has latested package update_cache.
+      ansible.builtin.apt:
+        update_cache: true
+
+    - name: Ensure desired packages are installed.
+      ansible.builtin.apt:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - cron
+        - tmux
+        - ncdu
+
+    - name: Ensure desired services are started and enabled.
+      ansible.builtin.service:
+        name: "{{ item }}"
+        state: started
+        enabled: true
+      with_items:
+        - cron
+

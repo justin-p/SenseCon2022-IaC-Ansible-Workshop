@@ -1,0 +1,41 @@
+---
+- name: Ensure infrastructure is destroyed
+  hosts: localhost
+  gather_facts: false
+
+  vars_files:
+    - "{{ playbook_dir }}/defaults/main.yml"
+    - "{{ playbook_dir }}/vars/main.yml"
+
+  pre_tasks:
+    - name: Assert that provider is defined
+      ansible.builtin.assert:
+        that:
+          - provider is defined
+        quiet: true
+
+    - name: Ensure '{{ provider }}.tfvars' template is deployed
+      ansible.builtin.template:
+        src: "{{ playbook_dir }}/templates/{{ provider }}.tfvars.j2"
+        dest: "{{ _terraformproviders[provider].path }}/single_host/terraform.tfvars"
+        mode: 0755
+
+  tasks:
+    - name: "Ensure infrastructure is destroyed with terraform on {{ provider }}"
+      community.general.terraform:
+        project_path: "{{ _terraformproviders[provider].path }}/single_host/"
+        variables_files: "{{ _terraformproviders[provider].path }}/single_host/terraform.tfvars"
+        state: absent
+
+  post_tasks:
+    - name: Ensure local ssh keys are destroyed
+      ansible.builtin.file:
+        path: "{{ sshkey_folder }}/{{ item }}-{{ project_name }}"
+        state: absent
+      with_items:
+        - ubuntu
+
+    - name: Remove 'terraform.tfvars' file
+      ansible.builtin.file:
+        path: "{{ _terraformproviders[provider].path }}/single_host/terraform.tfvars"
+        state: absent

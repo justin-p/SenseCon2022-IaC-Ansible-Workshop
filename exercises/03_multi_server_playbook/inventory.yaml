@@ -1,0 +1,17 @@
+sensecon:
+  vars:
+    ansible_user: ubuntu
+    ansible_ssh_private_key_file: /home/justin/.ssh/ubuntu-sensecon2022
+  children:
+    app:
+      hosts:
+        rational-magpie-2h1uuf:
+          ansible_host: 35.157.48.55
+        creative-yak-7pa7b6:
+          ansible_host: 3.126.152.84
+    db:
+      hosts:
+        rational-magpie-2h1uuf:
+    web:
+      hosts:
+        creative-yak-7pa7b6:

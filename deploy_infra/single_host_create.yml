@@ -1,0 +1,47 @@
+---
+- name: Ensure infrastructure is created
+  hosts: localhost
+  gather_facts: false
+
+  vars_files:
+    - "{{ playbook_dir }}/defaults/main.yml"
+    - "{{ playbook_dir }}/vars/main.yml"
+
+  pre_tasks:
+    - name: Assert that provider is defined
+      ansible.builtin.assert:
+        that:
+          - provider is defined
+        quiet: true
+
+    - name: Ensure .ssh directory exists
+      ansible.builtin.file:
+        dest: "{{ sshkey_folder }}"
+        mode: 0700
+        owner: "{{ lookup('env', 'USER') }}"
+        state: directory
+
+    - name: Ensure the needed ssh keys are created
+      community.crypto.openssh_keypair:
+        path: "{{ sshkey_folder }}/{{ item }}-{{ project_name }}"
+      with_items:
+        - ubuntu
+
+    - name: Ensure '{{ provider }}.tfvars' template is deployed
+      ansible.builtin.template:
+        src: "{{ playbook_dir }}/templates/{{ provider }}.tfvars.j2"
+        dest: "{{ _terraformproviders[provider].path }}/single_host/terraform.tfvars"
+        mode: 0755
+
+  tasks:
+    - name: "Run terraform to create the infrastructure on {{ provider }}"
+      community.general.terraform:
+        project_path: "{{ _terraformproviders[provider].path }}/single_host/"
+        variables_files: "{{ _terraformproviders[provider].path }}/single_host/terraform.tfvars"
+        force_init: true
+      register: terraform_infra
+
+  post_tasks:
+    - name: Print terraform outputs
+      ansible.builtin.debug:
+        msg: "{{ terraform_infra.outputs }}"

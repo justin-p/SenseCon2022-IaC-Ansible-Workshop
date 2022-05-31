@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+    - name: Ensure cron is installed.
+      ansible.builtin.apt:
+        name: cron
+        state: present
+
+    - name: Ensure cron is running
+      ansible.builtin.service:
+        name: cron
+        state: started
+        enabled: true

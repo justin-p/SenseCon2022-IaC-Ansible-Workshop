@@ -33,4 +33,7 @@ override.tf.json
 .terraformrc
 terraform.rc
 
-.keys*.sh
+# Files created during the workshop
+exercises/01_adhoc/ansible.cfg
+exercises/01_adhoc/inventory.yaml
+exercises/02_babies_first_playbook/playbook.yml

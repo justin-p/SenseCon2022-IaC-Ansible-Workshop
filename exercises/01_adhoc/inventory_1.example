@@ -1,0 +1,6 @@
+example: # group of servers called example
+  hosts: # the hosts in this group
+    host1: # the name of the host, host1
+      ansible_host: 1.2.3.4 # the IP of host1
+      ansible_user: ubuntu # the user ansible should use to connect to this host
+      ansible_ssh_private_key_file: /home/justin/.ssh/ubuntu-sensecon2022 # the private key ansible should use to connect to this host

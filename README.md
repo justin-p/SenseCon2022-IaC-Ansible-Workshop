@@ -181,22 +181,22 @@ Change the variables in the `deploy_server/defaults/main.yml` file. Below is a d
 
 ## Create infrastructure
 
-To create the infrastructure change directory to `deploy_server` and run the ansible create playbook.
+To create the infrastructure change directory to `deploy_infra` and run the ansible create playbook.
 
-**Note**: Don't forget to run the export commands in your current termonal so that Terraform can authenticate to your preferred cloud provider. 
+**Note**: Don't forget to run the export commands in your current termonal so that Terraform can authenticate to your preferred cloud provider.
 
 ```
-cd deploy_server
-ansible-playbook create.yml
+cd deploy_infra
+ansible-playbook single_host_create.yml
 ```
 
 ## Destroy infrastructure
 
-To create the infrastructure change directory to `deploy_server` and run the ansible destroy playbook.
+To create the infrastructure change directory to `deploy_infra` and run the ansible destroy playbook.
 
-**Note**: Don't forget to run the export commands in your current termonal so that Terraform can authenticate to your preferred cloud provider. 
+**Note**: Don't forget to run the export commands in your current termonal so that Terraform can authenticate to your preferred cloud provider.
 
 ```
-cd deploy_server
-ansible-playbook destroy.yml
+cd deploy_infra
+ansible-playbook single_host_destroy.yml
 ```

@@ -1,0 +1,25 @@
+---
+- hosts: all
+  tasks:
+    - name: Ensure apt has latested package update_cache.
+      ansible.builtin.apt:
+        update_cache: true
+      become: true
+
+    - name: Ensure cron is installed.
+      ansible.builtin.apt:
+        name: cron
+        state: present
+      become: true
+
+    - name: Ensure cron is running.
+      ansible.builtin.service:
+        name: cron
+        state: started
+        enabled: true
+
+    - name: Ensure ncdu is installed.
+      ansible.builtin.apt:
+        name: ncdu
+        state: present
+      become: true

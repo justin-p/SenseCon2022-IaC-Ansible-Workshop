@@ -1,0 +1,11 @@
+---
+exclude_paths:
+  - deploy_server/terraform/
+  - roles/
+  - files/
+  - .github/
+  - molecule/
+  - .cache/
+  - ${HOME}/.ansible/roles/
+skip_list:
+  - experimental

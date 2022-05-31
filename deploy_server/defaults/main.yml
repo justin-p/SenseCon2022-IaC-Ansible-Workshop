@@ -1,3 +1,4 @@
+---
 provider: aws
 project_name: sensecon2022
 sshkey_folder: /home/justin/.ssh

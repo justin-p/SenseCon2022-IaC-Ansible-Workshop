@@ -11,10 +11,10 @@
       ansible.builtin.assert:
         that:
           - provider is defined
-        quiet: yes
+        quiet: true
 
     - name: Ensure .ssh directory exists
-      file:
+      ansible.builtin.file:
         dest: "{{ sshkey_folder }}"
         mode: 0700
         owner: "{{ lookup('env', 'USER') }}"
@@ -30,6 +30,7 @@
       ansible.builtin.template:
         src: "{{ playbook_dir }}/templates/{{ provider }}.tfvars.j2"
         dest: "{{ _terraformproviders[provider].path }}/terraform.tfvars"
+        mode: 0755
 
   tasks:
     - name: "Run terraform to create the infrastructure on {{ provider }}"
@@ -41,5 +42,5 @@
 
   post_tasks:
     - name: Print terraform outputs
-      debug:
+      ansible.builtin.debug:
         msg: "{{ terraform_infra.outputs }}"

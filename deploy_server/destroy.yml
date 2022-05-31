@@ -11,12 +11,13 @@
       ansible.builtin.assert:
         that:
           - provider is defined
-        quiet: yes
+        quiet: true
 
     - name: Ensure '{{ provider }}.tfvars' template is deployed
       ansible.builtin.template:
         src: "{{ playbook_dir }}/templates/{{ provider }}.tfvars.j2"
         dest: "{{ _terraformproviders[provider].path }}/terraform.tfvars"
+        mode: 0755
 
   tasks:
     - name: "Ensure infrastructure is destroyed with terraform on {{ provider }}"

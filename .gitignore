@@ -37,3 +37,6 @@ terraform.rc
 exercises/01_adhoc/ansible.cfg
 exercises/01_adhoc/inventory.yaml
 exercises/02_babies_first_playbook/playbook.yml
+exercises/03_get_the_hangdler_of_it/main.yml
+exercises/04_keep_on_rolling/roles/*
+!exercises/04_keep_on_rolling/roles/.gitkeep

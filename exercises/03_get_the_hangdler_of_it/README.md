@@ -2,7 +2,7 @@
 2. Use a handler to restart nginx when:
    - The `default.vhost` file is changed by ansible.
    - The `sites-*/default` files are removed by ansbile.
-3. Create the following variables in a variable file called `./vars/main.yaml`. Create the following variables to replace hardcoded values within the playbook:
+3. Create the following variables in `./vars/main.yaml` to replace hardcoded values within the playbook:
    - `nginx_webroot_path`
    - `nginx_config_path`
    - `nginx_sites_enabled` (**hint**: `"{{ nginx_config_path }}/sites-enabled"`)

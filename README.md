@@ -4,6 +4,10 @@ To follow this workshop you will need access to either AWS, DigitalOcean or Hetz
 
 You will also need to have Ansible, Terraform, Molecule, ansible-lint, yamllint and VS Code (or any other source-code editor) installed. I recommend setting up a clean Ubuntu VM and running this [playbook](https://github.com/justin-p/ansible-playbook-terraform-workstation#installation) in your VM. This will setup everything you need during the workshop (and more).
 
+## Acknowledgements
+
+The content of this workshop is somewhat based of the work done by [Jeff Geerling](https://github.com/geerlingguy) and his [Ansible 101 series on YouTube](https://www.jeffgeerling.com/blog/2020/ansible-101-jeff-geerling-youtube-streaming-series), which is based of his book [Ansible for DevOps](https://www.ansiblefordevops.com/).
+
 ## Setup
 
 Clone this repository on the machine you intend to follow the workshop from. I recommend setting up a clean Ubuntu VM and running this [playbook](https://github.com/justin-p/ansible-playbook-terraform-workstation#installation) in your VM.

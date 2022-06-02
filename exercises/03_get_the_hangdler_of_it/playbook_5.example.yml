@@ -1,0 +1,11 @@
+- hosts: all
+  become: true
+  vars_files:
+    - vars_5.example.yaml
+
+  tasks:
+    - name: "Deploy template"
+      ansible.builtin.template:
+        src: "{{ playbook_dir }}/template_5.example.txt.j2"
+        dest: "/tmp/template_5.example.txt"
+        mode: 0755

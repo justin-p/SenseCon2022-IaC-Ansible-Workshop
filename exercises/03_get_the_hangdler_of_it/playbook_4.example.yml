@@ -1,7 +1,7 @@
 - hosts: all
   become: true
   vars_files:
-    - vars_4.example
+    - vars_4.example.yaml
 
   pre_tasks:
     - name: Update apt cache if needed.
@@ -14,4 +14,3 @@
         name:
           - "{{ package }}"
         state: present
-

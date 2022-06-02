@@ -34,11 +34,5 @@ override.tf.json
 terraform.rc
 
 # Files created during the workshop
-exercises/01_put_that_cookie_down_NOW/ansible.cfg
-exercises/01_put_that_cookie_down_NOW/inventory.yaml
-exercises/02_babies_first_playbook/playbook.yml
-exercises/02_babies_first_playbook/inventory.yaml
-exercises/03_get_the_hangdler_of_it/main.yml
-exercises/03_get_the_hangdler_of_it/inventory.yaml
 exercises/04_keep_on_rolling/roles/*
 !exercises/04_keep_on_rolling/roles/.gitkeep

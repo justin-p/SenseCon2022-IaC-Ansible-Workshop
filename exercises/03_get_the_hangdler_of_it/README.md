@@ -11,5 +11,5 @@
    - Ensure that it's clear that this file is managed by ansible.
    - Ensure that whenever someone changes the `nginx_webroot_path` this is also reflected in the template. (**hint**: `root /var/www/html;`)
 5. Ensure whenever someone updates the `nginx_webroot_path` this folder exists before files are copied into this folder. (**hint**: `state: directory`)
-6. Ensure that if someone wants to use a custom vhost template they can do so by updating a variable in `vars.yml`
+6. Ensure that if someone wants to use a custom vhost template they can do so by updating a variable in `./vars/main.yaml`
 7. Ensure that the playbook is idempotent.

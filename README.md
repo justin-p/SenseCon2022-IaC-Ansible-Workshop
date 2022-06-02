@@ -64,7 +64,7 @@ Login to the account using the root user.
 
 #### AWS free account (root user)
 
-**NOTE**: It is not recommended to generate API keys for the root account. Since this is a workshop we will ignore this best practice to save on time.
+**NOTE**: It is not recommended to generate API keys for the root account. Since this is a workshop we will ignore this best practice to save on time. If you know what you are doing feel free to setup a IAM user instead.
 
 Login into your AWS account and click on your username and then `Security credentials`.
 

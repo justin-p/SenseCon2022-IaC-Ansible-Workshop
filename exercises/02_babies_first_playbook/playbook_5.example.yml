@@ -5,6 +5,7 @@
     - name: Update apt cache if needed.
       ansible.builtin.apt:
         update_cache: true
+        cache_valid_time: 3600
 
     - name: Ensure desired packages are installed.
       ansible.builtin.apt:
@@ -22,4 +23,3 @@
         enabled: true
       with_items:
         - cron
-

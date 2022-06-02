@@ -1,0 +1,25 @@
+example: # group of servers called example
+  hosts: # the hosts in this group
+    host1: # the name of the host, host1
+      ansible_host: 1.2.3.4 # the IP of host1
+  children: # child groups in the example group
+    web: # child group called web
+      hosts: # the hosts in this group
+        host2: # the name of the host, host2
+          ansible_host: 5.6.7.8 # the IP of host2
+        host3: # the name of the host, host3
+          ansible_host: 1.3.3.7 # the IP of host3
+      vars: # variables for the hosts in the child group web
+        ansible_user: centos # overwrites the variable set in the vars of the example group.
+        webserver: nginx
+    db: # child group called db
+      hosts:
+        host4: # the name of the host, host4
+          ansible_host: 42.0.0.69 # the IP of host4
+        host: # the name of the host, host5
+          ansible_host: 8.0.0.8 # the IP of host5
+      vars:
+        db: mysql
+  vars: # variables fror all the hosts and child groups in example
+    ansible_user: ubuntu # the user ansible should use to connect to group of hosts called example
+    ansible_ssh_private_key_file: /home/justin/.ssh/ubuntu-sensecon2022 # the private key ansible should use to connect to group of hosts called example

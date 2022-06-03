@@ -1,0 +1,10 @@
+---
+- src: https://github.com/robertdebock/ansible-role-bootstrap
+  name: robertdebock.bootstrap
+  version: 6.0.0
+- src: https://github.com/justin-p/ansible-role-update_package_cache
+  name: robertdebock.update_package_cache
+  version: justin-p-idempotent
+- src: https://github.com/robertdebock/ansible-role-core_dependencies
+  name: robertdebock.core_dependencies
+  version: 2.1.9

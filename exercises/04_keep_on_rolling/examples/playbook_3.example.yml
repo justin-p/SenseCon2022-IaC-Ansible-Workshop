@@ -1,0 +1,22 @@
+---
+- name: Example
+  hosts: all
+  become: true
+  vars:
+    ports_to_open:
+      - name: ssh
+      - name: https
+  roles:
+    - robertdebock.bootstrap
+    - {
+        role: robertdebock.update_package_cache,
+        update_package_cache_cache_valid_time: 3600
+    }
+    - robertdebock.core_dependencies
+    - robertdebock.epel
+    - robertdebock.update
+    - robertdebock.hostname
+    - {
+        role: robertdebock.firewall,
+        firewall_services: "{{ ports_to_open }}"
+    }

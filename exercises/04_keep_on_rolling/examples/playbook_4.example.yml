@@ -1,0 +1,9 @@
+---
+- ansible.builtin.import_playbook: "{{ playbook_dir }}/playbooks/ansible_galaxy/main.yml"
+
+- name: Example
+  hosts: all
+  become: true
+  tasks:
+    - name: Bootstrap host
+      ansible.builtin.import_tasks: "{{ playbook_dir }}/tasks/bootstrap/main.yml"

@@ -1,0 +1,20 @@
+---
+- name: Infra Create
+  ansible.builtin.import_playbook: "{{ playbook_dir }}/../../../deploy_infra/single_host_create.yml"
+
+- hosts: localhost
+  tasks:
+  - name: print terraform_infra output
+    ansible.builtin.debug:
+      msg: "{{ terraform_infra }}"
+
+  - name: "filter terraform_infra output"
+    ansible.builtin.debug:
+      msg: "{{ item }}"
+    with_items:
+      - "{{ terraform_infra.outputs.public_ip.value }}"
+      - "{{ terraform_infra.outputs.server_name.value }}"
+      - "{{ terraform_infra.outputs.ssh_command.value }}"
+
+- name: Infra Destroy
+  ansible.builtin.import_playbook: "{{ playbook_dir }}/../../../deploy_infra/single_host_destroy.yml"

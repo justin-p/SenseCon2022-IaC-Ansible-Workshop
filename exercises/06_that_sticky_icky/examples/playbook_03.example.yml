@@ -1,0 +1,42 @@
+---
+- name: Infra Create
+  ansible.builtin.import_playbook: "{{ playbook_dir }}/../../../deploy_infra/single_host_create.yml"
+  tags: always
+  when:
+    - "'destroy' not in ansible_run_tags"
+
+- name: Infra Destroy
+  ansible.builtin.import_playbook: "{{ playbook_dir }}/../../../deploy_infra/single_host_destroy.yml"
+  tags: ['never', 'destroy']
+
+- hosts: localhost
+  tasks:
+  - name: Create Inventory
+    ansible.builtin.add_host:
+      name: "{{ terraform_infra.outputs.server_name.value }}"
+      ansible_host: "{{ terraform_infra.outputs.public_ip.value }}"
+      groups: sensecon
+    tags: always
+    when:
+      - "'destroy' not in ansible_run_tags"
+    changed_when: false
+
+- hosts: sensecon
+  vars:
+    ansible_user: ubuntu
+    ansible_ssh_private_key_file: /home/justin/.ssh/ubuntu-sensecon2022
+  tasks:
+    - name: Run the equivalent of "apt-get update" as a separate step
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+      become: true
+      tags: always
+
+    - name: Run "apt-get dist-upgrade"
+      ansible.builtin.apt:
+        upgrade: dist
+        update_cache: true
+        cache_valid_time: 3600
+      become: true
+      tags: upgrade

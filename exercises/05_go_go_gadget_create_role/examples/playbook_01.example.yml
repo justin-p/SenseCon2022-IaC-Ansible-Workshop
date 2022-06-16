@@ -1,0 +1,69 @@
+---
+- name: example
+  hosts: localhost
+  vars:
+    var1: "foo"
+    var2: "bar"
+    var3: true
+  tasks:
+    - name: print foobar
+      ansible.builtin.debug:
+        msg: "foobar"
+
+#    - name: print foo when var1 = 'foo'
+#      ansible.builtin.debug:
+#        msg: "foo"
+#      when: var1 == "foo"
+#
+#    - name: print foo when var2 != 'foo'
+#      ansible.builtin.debug:
+#        msg: "foo"
+#      when: var2 != "foo"
+#
+#    - name: print foobar when var1 == 'foo' and var2 == 'bar'
+#      ansible.builtin.debug:
+#        msg: "foobar"
+#      when: # 'when: (var1 == "foo") and (var2 == "bar")' is also valid
+#        - var1 == "foo"
+#        - var2 == "bar"
+#
+#    - name: print foobar when var1 == 'foo' or var2 == 'bar'
+#      ansible.builtin.debug:
+#        msg: "foobar"
+#      when: (var1 == "foo") or (var2 == "bar")
+#
+#    - name: print foobar when var3 is defined
+#      ansible.builtin.debug:
+#        msg: "foobar"
+#      when: var3 is defined
+#
+#    - name: print foobar when var4 is undefined
+#      ansible.builtin.debug:
+#        msg: "foobar"
+#      when: var4 is undefined
+#
+#    - name: Show facts available on the system
+#      ansible.builtin.debug:
+#        var: ansible_facts
+#
+#    - name: Do something when os_family is Debian'
+#      ansible.builtin.debug:
+#        msg: "This is Debian"
+#      when: ansible_facts['os_family'] == "Debian"
+#
+#    - name: Do something when os_family is RedHat'
+#      ansible.builtin.debug:
+#        msg: "This is RedHat"
+#      when: ansible_facts['os_family'] == "RedHat"
+#
+#    - name: Do something when system is using CentOS 6 or Debian 7
+#      ansible.builtin.debug:
+#        msg: "This system uses using CentOS 6 or Debian 7"
+#      when: (ansible_facts['distribution'] == "CentOS" and ansible_facts['distribution_major_version'] == "6") or
+#            (ansible_facts['distribution'] == "Debian" and ansible_facts['distribution_major_version'] == "7")
+#
+#    - name: Do something when system is CentOS and the major version is 6
+#      ansible.builtin.command: /sbin/shutdown -t now
+#      when:
+#        - ansible_facts['distribution'] == "CentOS"
+#        - ansible_facts['distribution_major_version'] == "6"

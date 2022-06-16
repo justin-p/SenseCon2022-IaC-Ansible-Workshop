@@ -1,5 +1,5 @@
 1. Create a role for https://github.com/sensepost/godoh
-    1. Ensure the role can either install from source or already build releases from github. Make this behavoir user controlable with a variable.
+    1. Ensure the role can either install from source or already build releases from github. Make this behavior is user controlable with a variable.
     2. Ensure that when build from source unique encryption keys are generated.
     3. Ensure that each time the role is ran older builds of godoh are removed.
     4. Template as much as posiable, for example:

@@ -1,0 +1,23 @@
+---
+- ansible.builtin.import_playbook: "{{ playbook_dir }}/playbooks/ansible_galaxy/main.yml"
+
+- name: deploy web host.
+  hosts: all
+  become: true
+  vars_files:
+    - vars/main.yaml
+  handlers:
+    - name: restart nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
+
+  tasks:
+    - name: bootstrap host
+      ansible.builtin.import_tasks: "{{ playbook_dir }}/tasks/bootstrap/main.yml"
+
+    - name: install nginx
+      ansible.builtin.import_tasks: "{{ playbook_dir }}/tasks/install_nginx/main.yml"
+
+    - name: deploy webapp
+      ansible.builtin.import_tasks: "{{ playbook_dir }}/tasks/deploy_webapp/main.yml"

@@ -1,0 +1,34 @@
+---
+- name: "ensure that {{ nginx_webroot_path }} exists."
+  ansible.builtin.file:
+    path: "{{ nginx_webroot_path }}"
+    state: directory
+    mode: 0755
+
+- name: "copy over files to webroot {{ nginx_webroot_path }}."
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: 0755
+  with_items:
+    - src: "{{ playbook_dir }}/files/aesthetic.css"
+      dest: "{{ nginx_webroot_path }}/aesthetic.css"
+    - src: "{{ playbook_dir }}/files/index.css"
+      dest: "{{ nginx_webroot_path }}/index.css"
+    - src: "{{ playbook_dir }}/files/index.html"
+      dest: "{{ nginx_webroot_path }}/index.html"
+    - src: "{{ playbook_dir }}/files/man.gif"
+      dest: "{{ nginx_webroot_path }}/man.gif"
+
+- name: "ensure that {{ nginx_config_path  }}/conf.d exists."
+  ansible.builtin.file:
+    path: "{{ nginx_config_path  }}/conf.d"
+    state: directory
+    mode: 0755
+
+- name: "deploy nginx vhost to {{ nginx_config_path  }}/conf.d"
+  ansible.builtin.template:
+    src: "{{ nginx_vhost_template_path }}"
+    dest: "{{ nginx_config_path  }}/conf.d/default.conf"
+    mode: 0755
+  notify: restart nginx

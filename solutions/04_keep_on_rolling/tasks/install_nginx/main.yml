@@ -1,0 +1,4 @@
+---
+- name: run 'nginxinc.nginx'-role
+  ansible.builtin.include_role:
+    name: nginxinc.nginx

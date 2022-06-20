@@ -6,7 +6,7 @@ You will also need to have Ansible, Terraform, Molecule, ansible-lint, yamllint 
 
 ## Acknowledgements
 
-The content of this workshop is somewhat based of the work done by [Jeff Geerling](https://github.com/geerlingguy) and his [Ansible 101 series on YouTube](https://www.jeffgeerling.com/blog/2020/ansible-101-jeff-geerling-youtube-streaming-series), which is based of his book [Ansible for DevOps](https://www.ansiblefordevops.com/).
+The content of this workshop is somewhat based off the work done by [Jeff Geerling](https://github.com/geerlingguy) and his [Ansible 101 series on YouTube](https://www.jeffgeerling.com/blog/2020/ansible-101-jeff-geerling-youtube-streaming-series), which is based off his book [Ansible for DevOps](https://www.ansiblefordevops.com/).
 
 ## Setup
 

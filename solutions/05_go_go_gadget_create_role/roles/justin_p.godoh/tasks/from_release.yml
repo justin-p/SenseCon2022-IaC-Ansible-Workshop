@@ -1,0 +1,13 @@
+---
+- name: "ensure {{ godoh_install_dir }} exists."
+  ansible.builtin.file:
+    path: "{{ godoh_install_dir }}"
+    mode: 0755
+    state: directory
+
+- name: "download godoh-{{ godoh_release_binary_type }} {{ godoh_version }} from {{ godoh_repo_url }}"
+  ansible.builtin.get_url:
+    url: "{{ godoh_release_url }}"
+    dest: "{{ godoh_install_dir }}/godoh-{{ godoh_release_binary_type }}-{{ godoh_version }}"
+    mode: 0755
+    checksum: "{{ godoh_release_url_sha1sum }}"

@@ -1,0 +1,10 @@
+---
+# defaults file for justin_p.godoh
+godoh_golang_bin_location: "/opt/go/1.18.2/bin"
+godoh_install_from: "source"
+godoh_install_dir: "/tmp/godoh"
+godoh_version: 1.6
+godoh_repo_url: "https://github.com/sensepost/godoh"
+godoh_release_binary_type: "linux64"
+godoh_release_url: "{{ godoh_repo_url }}/releases/download/{{ godoh_version }}/godoh-{{ godoh_release_binary_type }}"
+godoh_release_url_sha1sum: "sha1:86445d7ef450ddcb190f14c6f7fc8a1a33945c45"

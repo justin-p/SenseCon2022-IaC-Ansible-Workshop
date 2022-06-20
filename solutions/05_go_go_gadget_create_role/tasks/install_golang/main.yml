@@ -1,0 +1,4 @@
+---
+- name: run 'gantsign.golang'-role
+  ansible.builtin.include_role:
+    name: gantsign.golang

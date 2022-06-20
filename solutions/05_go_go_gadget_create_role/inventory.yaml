@@ -1,0 +1,6 @@
+sensecon:
+  hosts:
+    exact-guinea-ofssa4:
+      ansible_host: 18.194.209.130
+      ansible_user: ubuntu
+      ansible_ssh_private_key_file: /home/your_name/.ssh/ubuntu-sensecon2022

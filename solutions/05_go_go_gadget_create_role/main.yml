@@ -1,0 +1,22 @@
+---
+- ansible.builtin.import_playbook: "{{ playbook_dir }}/playbooks/ansible_galaxy/main.yml"
+
+- name: deploy godoh host.
+  hosts: all
+  become: true
+  vars:
+    golang_version: "1.18.1"
+    golang_install_dir: "/opt/go/{{ golang_version }}"
+    godoh_golang_bin_location: "{{ golang_install_dir }}/bin"
+    godoh_install_from: "source"
+  tasks:
+    - name: bootstrap host
+      ansible.builtin.import_tasks: "{{ playbook_dir }}/tasks/bootstrap/main.yml"
+
+    - name: install golang
+      ansible.builtin.import_tasks: "{{ playbook_dir }}/tasks/install_golang/main.yml"
+
+    - name: run 'justin_p.godoh'-role
+      ansible.builtin.include_role:
+        name: justin_p.godoh
+

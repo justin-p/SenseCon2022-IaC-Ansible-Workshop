@@ -1,0 +1,9 @@
+---
+# tasks file for justin_p.godoh
+- name: install godoh from source
+  ansible.builtin.import_tasks: "from_source.yml"
+  when: godoh_install_from == 'source'
+
+- name: install godoh from release
+  ansible.builtin.import_tasks: "from_release.yml"
+  when: godoh_install_from == 'release'

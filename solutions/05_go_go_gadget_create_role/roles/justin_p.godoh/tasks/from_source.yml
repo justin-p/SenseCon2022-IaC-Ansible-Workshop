@@ -1,0 +1,26 @@
+---
+- name: "clone godoh {{ godoh_version  }} from {{ godoh_repo_url }}."
+  ansible.builtin.git:
+    repo: "{{ godoh_repo_url }}"
+    dest: "{{ godoh_install_dir }}"
+    version: "{{ godoh_version }}"
+    force: true
+
+- name: generate a unique encryption key for godoh.
+  ansible.builtin.make:
+    chdir: "{{ godoh_install_dir }}"
+    target: key
+
+- name: remove older godoh builds
+  ansible.builtin.make:
+    chdir: "{{ godoh_install_dir }}"
+    target: clean
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ godoh_golang_bin_location }}"
+
+- name: build godoh from source
+  ansible.builtin.make:
+    chdir: "{{ godoh_install_dir }}"
+    target: linux
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ godoh_golang_bin_location }}"

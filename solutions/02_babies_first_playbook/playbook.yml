@@ -1,0 +1,66 @@
+---
+- name: deploy webhost
+  hosts: all
+  become: true
+
+  tasks:
+    - name: update apt cache if needed
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: ensure NGINX is installed
+      ansible.builtin.apt:
+        name:
+          - nginx
+        state: present
+
+    - name: ensure NGINX service is running
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: copy over webapp files.
+      ansible.builtin.copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        mode: 0755
+      with_items:
+        - src: "{{ playbook_dir }}/files/aesthetic.css"
+          dest: "/var/www/html/aesthetic.css"
+        - src: "{{ playbook_dir }}/files/index.css"
+          dest: "/var/www/html/index.css"
+        - src: "{{ playbook_dir }}/files/index.html"
+          dest: "/var/www/html/index.html"
+        - src: "{{ playbook_dir }}/files/man.gif"
+          dest: "/var/www/html/man.gif"
+        - src: "{{ playbook_dir }}/files/default.vhost"
+          dest: "/etc/nginx/sites-enabled/default.vhost"
+
+    - name: remove default vhost file
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+        - /etc/nginx/sites-enabled/default
+        - /etc/nginx/sites-available/default
+
+    - name: restart nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
+
+    - name: ensure SSH, HTTP and HTTPS are allowed by UFW.
+      ansible.builtin.ufw:
+        rule: allow
+        port: "{{ item }}"
+        protocol: tcp
+      with_items:
+        - 22
+        - 80
+        - 443
+
+    - name: ensure UFW is enabled
+      ansible.builtin.ufw:
+        state: enabled

@@ -1,0 +1,6 @@
+sensecon:
+  hosts:
+    sound-racer-mkeb52:
+      ansible_host: 3.70.245.244 # the IP of host1
+      ansible_user: ubuntu # the user ansible should use to connect to this host
+      ansible_ssh_private_key_file: /home/justin/.ssh/ubuntu-sensecon2022 # the private key ansible should use to connect to this host

@@ -1,0 +1,7 @@
+---
+nginx_webroot_path: "/var/www/html/sensecon"
+nginx_config_path: "/etc/nginx"
+nginx_sites_enabled: "{{ nginx_config_path }}/sites-enabled"
+nginx_sites_available: "{{ nginx_config_path }}/sites-available"
+nginx_vhost_template_name: "default.vhost.j2"
+nginx_vhost_template_path: "{{ playbook_dir }}/templates/{{ nginx_vhost_template_name}}"

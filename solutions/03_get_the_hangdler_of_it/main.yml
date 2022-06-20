@@ -1,0 +1,82 @@
+---
+- name: Deploy web host.
+  hosts: all
+  become: true
+  vars_files:
+    - vars/main.yaml
+
+  handlers:
+    - name: restart nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
+
+  pre_tasks:
+    - name: update apt cache if needed.
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+  tasks:
+    - name: ensure NGINX is installed.
+      ansible.builtin.apt:
+        name:
+          - nginx
+        state: present
+
+    - name: ensure NGINX service is started and runs on boot.
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: "ensure that {{ nginx_webroot_path }} exists."
+      ansible.builtin.file:
+        path: "{{ nginx_webroot_path }}"
+        state: directory
+        mode: 0755
+
+    - name: "copy over files to webroot {{ nginx_webroot_path }}."
+      ansible.builtin.copy:
+        src: "{{ item.src }}"
+        dest: "{{ item.dest }}"
+        mode: 0755
+      with_items:
+        - src: "{{ playbook_dir }}/files/aesthetic.css"
+          dest: "{{ nginx_webroot_path }}/aesthetic.css"
+        - src: "{{ playbook_dir }}/files/index.css"
+          dest: "{{ nginx_webroot_path }}/index.css"
+        - src: "{{ playbook_dir }}/files/index.html"
+          dest: "{{ nginx_webroot_path }}/index.html"
+        - src: "{{ playbook_dir }}/files/man.gif"
+          dest: "{{ nginx_webroot_path }}/man.gif"
+
+    - name: "deploy nginx vhost to {{ nginx_sites_enabled }}"
+      ansible.builtin.template:
+        src: "{{ nginx_vhost_template_path }}"
+        dest: "{{ nginx_sites_enabled }}/default.vhost"
+        mode: 0755
+      notify: restart nginx
+
+    - name: "remove default vhost file from {{ nginx_sites_enabled }}"
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: absent
+      with_items:
+        - "{{ nginx_sites_enabled }}/default"
+        - "{{ nginx_sites_available }}/default"
+      notify: restart nginx
+
+    - name: ensure SSH, HTTP and HTTPS are allowed by UFW.
+      ansible.builtin.ufw:
+        rule: allow
+        port: "{{ item }}"
+        protocol: tcp
+      with_items:
+        - 22
+        - 80
+        - 443
+
+    - name: ensure UFW is enabled
+      ansible.builtin.ufw:
+        state: enabled

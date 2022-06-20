@@ -1,0 +1,16 @@
+# {{ ansible_managed }}
+server {
+        # This file is now changed.
+        
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root {{ nginx_webroot_path }};
+
+        index index.html;
+        server_name _;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
